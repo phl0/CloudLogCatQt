@@ -58,3 +58,10 @@ FORMS += cloudlogcatqt.ui
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../Qt/Tools/OpenSSL/Win_x64/lib/ -llibcrypto -llibssl
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../Qt/Tools/OpenSSL/Win_x64/lib/ -llibcrypto -llibssl
+else:unix: LIBS += -L$$PWD/../../../../Qt/Tools/OpenSSL/Win_x64/lib/ -llibcrypto -llibssl
+
+INCLUDEPATH += $$PWD/../../../../Qt/Tools/OpenSSL/Win_x64/include
+DEPENDPATH += $$PWD/../../../../Qt/Tools/OpenSSL/Win_x64/include
